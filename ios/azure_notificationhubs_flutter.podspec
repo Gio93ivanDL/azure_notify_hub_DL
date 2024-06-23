@@ -1,25 +1,32 @@
-#
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint azure_notify_hub.podspec' to validate before publishing.
-#
 Pod::Spec.new do |s|
-  s.name             = 'azure_notify_hub'
-  s.version          = '1.0.0'
-  s.summary          = 'A new flutter plugin project.'
-  s.description      = <<-DESC
-A new flutter plugin project.
-                       DESC
-  s.homepage         = 'http://example.com'
-  s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
-  s.dependency 'Flutter'
-  s.platform = :ios, '12.0'
-  s.dependency 'azure_notify_hub-iOS'
-  s.static_framework = true
+  s.name                = 'AzureNotificationHubs-iOS'
+  s.version             = '3.1.5'
 
-  # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
+  s.summary             = 'Push notifications for consumer and enterprise apps – from any backend to any device platform'
+  s.description         = <<-DESC
+                          Azure Notification Hubs provide an easy-to-use, multiplatform, scaled-out push infrastructure that enables you to send mobile push notifications from any backend (in the cloud or on-premises) to any mobile platform.
+                          DESC
+
+  s.author              = { 'Microsoft' => 'http://microsoft.com' }
+  s.license             = { :type => 'Apache 2.0', :file => 'WindowsAzureMessaging-SDK-Apple/LICENSE' }
+  s.documentation_url   = "https://docs.microsoft.com/en-us/azure/notification-hubs/"
+  s.homepage            = "http://azure.microsoft.com/en-us/services/notification-hubs/"
+
+  s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.9'
+  s.tvos.deployment_target = '11.0'
+  s.source              = { :http => "https://github.com/Azure/azure-notificationhubs-ios/releases/download/#{s.version}/WindowsAzureMessaging-SDK-Apple-XCFramework-#{s.version}.zip" }
+  s.preserve_path       = 'WindowsAzureMessaging-SDK-Apple/README.md'
+
+  s.frameworks          = 'Foundation', 'SystemConfiguration'
+  s.ios.frameworks      = 'UIKit'
+  s.tvos.frameworks     = 'UIKit'
+  s.osx.frameworks      = 'AppKit'
+  s.ios.weak_frameworks = 'UserNotifications' 
+  s.tvos.weak_frameworks = 'UserNotifications' 
+  s.osx.weak_frameworks = 'UserNotifications' 
+  s.ios.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
+  s.tvos.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
+  s.osx.vendored_frameworks = "WindowsAzureMessaging-SDK-Apple/WindowsAzureMessaging.xcframework"
+
 end
